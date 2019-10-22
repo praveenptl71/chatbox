@@ -1,8 +1,10 @@
 # chatbox
 A firebase chatbox package for Ionic 4 application
 
-Step to integrate
-1.) Install package `npm install @praveenptl71/chatbox`
+Step to integrate:
+
+1.) Install package 
+`npm install @praveenptl71/chatbox`
 
 2.) Import firebase
 `import * as firebase from 'firebase';`
