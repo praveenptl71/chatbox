@@ -69,8 +69,29 @@ import { UserService, RoomService } from '@praveenptl71/chatbox';
 constructor( ..., public userService:UserService, public roomService:RoomService, ...)
 ```
 
+#### Signup to firebase app 
+create new account (if don't have account)
+
+```typescript
+firebase.auth().createUserWithEmailAndPassword('email@gmail.com', '123456').then(data=>{
+     // update user profile after sign up
+     this.userService.updateUserProfile({descriptions:'', name:'',pictureURL:''});
+
+     // load all users and chats
+	this.userService.getUsers(); 
+	this.roomService.getAllRooms();
+
+	// navigate to this url
+	this.navCtrl.navigateRoot('/chatbox/tabs/inbox'); 
+})
+.catch(error=>{
+  
+})
+```
+
 
 #### Login to firebase app
+(if already have account)
 
 Login with email and password
 
