@@ -1,0 +1,22 @@
+.client_logo{
+    height:100%;
+    width:100%;
+    background:#000000;
+  }
+  .display-table{
+      display: table;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+  }
+  .display-cell{
+      display: table-cell;
+      vertical-align: middle;
+  }
+  .logo-img{
+      width: auto !important;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+  
+  }

@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar class="ion-no-padding" color="chatboxPrimary">
+        <ion-buttons slot="start">
+            <ion-back-button color="light" class="ion-no-margin"></ion-back-button>
+            <!-- <ion-button fill="clear" (click)="goBack()" slot="end" class="ion-no-margin">
+          <ion-icon slot="icon-only" slot="icon-only" color="light" name="arrow-back"></ion-icon>
+      </ion-button> -->
+        </ion-buttons>
+        <ion-title>chatDetail</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngIf="users">
+        <ion-list-header>Group member</ion-list-header>
+        <ion-item *ngFor="let user of users">
+            <ion-avatar slot="start" style="position: relative">
+                <img [src]="getUserImage(user.uid)" onError="src = 'assets/imgs/user.png'">
+            </ion-avatar>
+            <ion-label>
+                {{ getUserName(user.uid) }}<br>
+                <small>Join {{ getDateTime(user.time) }}</small>
+            </ion-label>
+            <span *ngIf="user.status == 'owner'" slot="end" class="ion-no-margin">
+        {{ user.status }}
+      </span>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

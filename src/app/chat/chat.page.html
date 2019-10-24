@@ -1,0 +1,80 @@
+<ion-header>
+    <ion-toolbar class="ion-no-padding" color="chatboxPrimary">
+        <ion-buttons slot="start">
+            <!-- <ion-back-button color="green" class="ion-no-margin"></ion-back-button> -->
+            <ion-button fill="clear" (click)="goBack()" slot="end" class="ion-no-margin">
+                <ion-icon slot="icon-only" slot="icon-only" color="light" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-no-padding">
+            <ion-item button (click)="openChantDetails()" style="--background: transparent;--padding-start:0" lines="none">
+                <ion-avatar slot="start"><img [src]="(currentThread && currentThread.thread && currentThread.thread.details.type == Define.RoomTypeGroup)? currentThread.thread.details.type :((users && users.meta && users.meta.pictureURL)?users.meta.pictureURL:'')" onError="src = 'assets/imgs/user.png'"
+                    /> </ion-avatar>
+                <ion-label color="light">
+                    {{ (currentThread && currentThread.thread && currentThread.thread.details.type == Define.RoomTypeGroup)?currentThread.thread.details.name:((users && users.meta)?users.meta.name:'')}}
+                    <small *ngIf="(users && users.online) && currentThread.thread.details.type == Define.RoomType1to1">
+                        <p> {{ (users.online.status == true)?"online": (getDateTimeString(users.online.time) ) }} </p>
+                    </small>
+                    <small *ngIf="(currentThread && currentThread.thread && currentThread.thread.details.type == Define.RoomTypeGroup)">
+                        <p> {{ getMembers() }} </p>
+                    </small>
+                </ion-label>
+            </ion-item>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content #content color="light" fullscreen="true">
+    <div class="chat">
+        <div class="card">
+            <div class="card-body msg_card_body">
+
+                <span *ngFor="let message of message_list; let i = index">
+
+          <div *ngIf="(getDate(message_list[i]) != getDate(message_list[i-1]))" class="divider">
+            <span class="divider-date">{{ getDate(message) }}</span>
+            </div>
+
+            <div *ngIf="getSide(message) == 'right'" class="d-flex justify-content-start mb-4">
+                <div class="msg_cotainer">
+                    <small class="message-user" *ngIf="threadData && threadData.details && threadData.details.type==Define.RoomTypeGroup"> {{ getUserName(message) }} </small>
+                    <div class="message-text" *ngIf="message.type == Define.MessageTypeText " [innerHTML]="getMessage(message) | lineBreak "></div>
+                    <div *ngIf="message.type == Define.MessageTypeImage ">
+                        <img style="min-width: 120px;" [src]="getThumbnailUrl(message)" onError="src=''" (click)="showFullImage(message)" />
+                    </div>
+                    <span class="msg_time">{{ getTime(message)  }}</span>
+                </div>
+            </div>
+
+            <div *ngIf="getSide(message) == 'left'" class="d-flex justify-content-end mb-4">
+                <div class="msg_cotainer_send">
+                    <div class="message-text" *ngIf="message.type == Define.MessageTypeText " [innerHTML]="getMessage(message) | lineBreak"></div>
+                    <div *ngIf="message.type == Define.MessageTypeImage ">
+                        <img style="min-width: 120px;" [src]="getThumbnailUrl(message)" onError="src=''" (click)="showFullImage(message)" />
+                    </div>
+                    <span class="msg_time_send">{{ getTime(message)  }}</span>
+                </div>
+            </div>
+            </span>
+
+        </div>
+    </div>
+    </div>
+</ion-content>
+
+<ion-footer class=" background: transparent !important;">
+    <!-- <input type="file" (change)="fileChange($event)" /> -->
+    <ion-progress-bar *ngIf="showFileProgress" type="determinate" [buffer]="bufferSize" style="--buffer-background:var(--ion-color-blue);"></ion-progress-bar>
+    <div class="footer-input">
+        <ion-item class="chat-item ion-no-padding" lines="none">
+            <ion-textarea class="ion-no-margin" [(ngModel)]="inputMessage" #chatTextarea autosize rows="1" placeholder="Type your message" style="--padding-start:15px;--padding-top:15px;">
+            </ion-textarea>
+            <ion-button fill="clear" (click)="openModal()" slot="end" class="ion-no-margin">
+                <ion-icon slot="icon-only" slot="icon-only" color="chatboxPrimary" name="attach"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" (click)="sendMessage()" slot="end" class="ion-no-margin">
+                <ion-icon slot="icon-only" slot="icon-only" color="chatboxPrimary" name="send"></ion-icon>
+            </ion-button>
+        </ion-item>
+    </div>
+</ion-footer>

@@ -1,0 +1,34 @@
+<!-- <ion-header>
+    <ion-toolbar style="--background: rgba(0,0,0,0.5);">
+      <ion-buttons slot="start">
+          <ion-button fill="clear" (click)="goBack()" slot="end" class="ion-no-margin">
+              <ion-icon slot="icon-only" slot="icon-only" color="light" name="arrow-back"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+      <ion-title class="ion-no-padding">Profile</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+<ion-content>
+
+    <!-- <div>
+        <img [src]="imageUrl"  onError="src=''" />
+      </div> -->
+      <div class="client_logo">
+          <ion-toolbar style="--background: rgba(0,0,0, 0.5);position: absolute;top: 0;left: 0;">
+              <ion-buttons slot="start">
+                  <ion-button fill="clear" (click)="goBack()" slot="end" class="ion-no-margin">
+                      <ion-icon slot="icon-only" slot="icon-only" color="light" name="arrow-back"></ion-icon>
+                  </ion-button>
+              </ion-buttons>
+              <ion-title color="light" class="ion-no-padding">
+                  {{ name }}<br><small>{{ time }}</small>
+              </ion-title>
+            </ion-toolbar>
+         
+          <div class="display-table">
+            <div class="display-cell">
+                <img [src]="imageUrl"  onError="src=''" class="logo-img" />
+            </div>
+          </div>
+      </div>  
+</ion-content>
