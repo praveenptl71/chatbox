@@ -109,6 +109,51 @@ firebase.auth().signInWithEmailAndPassword('email@gmail.com', '123456').then(use
 })
 ```
 
+#### Theming
+Apply your theme color add these code (you can change color code)
+
+```scss
+// theme/variable.scss
+
+:root {
+	...
+	/** chatboxPrimary **/
+    --ion-color-chatboxPrimary: #1798d2;
+    --ion-color-chatboxPrimary-rgb: 23, 152, 210;
+    --ion-color-chatboxPrimary-contrast: #ffffff;
+    --ion-color-chatboxPrimary-contrast-rgb: 255, 255, 255;
+    --ion-color-chatboxPrimary-shade: #1486b9;
+    --ion-color-chatboxPrimary-tint: #2ea2d7;
+    /** chatboxLight **/
+    --ion-color-chatboxLight: #f4f5f8;
+    --ion-color-chatboxLight-rgb: 244, 244, 244;
+    --ion-color-chatboxLight-contrast: #000000;
+    --ion-color-chatboxLight-contrast-rgb: 0, 0, 0;
+    --ion-color-chatboxLight-shade: #d7d8da;
+    --ion-color-chatboxLight-tint: #f5f6f9;
+    ...
+}
+
+.ion-color-chatboxPrimary {
+    --ion-color-base: var(--ion-color-chatboxPrimary) !important;
+    --ion-color-base-rgb: var(--ion-color-chatboxPrimary-rgb) !important;
+    --ion-color-contrast: var(--ion-color-chatboxPrimary-contrast) !important;
+    --ion-color-contrast-rgb: var(--ion-color-chatboxPrimary-contrast-rgb) !important;
+    --ion-color-shade: var(--ion-color-chatboxPrimary-shade) !important;
+    --ion-color-tint: var(--ion-color-chatboxPrimary-tint) !important;
+}
+
+.ion-color-chatboxLight {
+    --ion-color-base: var(--ion-color-chatboxLight) !important;
+    --ion-color-base-rgb: var(--ion-color-chatboxLight-rgb) !important;
+    --ion-color-contrast: var(--ion-color-chatboxLight-contrast) !important;
+    --ion-color-contrast-rgb: var(--ion-color-chatboxLight-contrast-rgb) !important;
+    --ion-color-shade: var(--ion-color-chatboxLight-shade) !important;
+    --ion-color-tint: var(--ion-color-chatboxLight-tint) !important;
+}
+```
+
+
 # Credits
 
 Praveen Patel - [@praveenptl71](https://github.com/praveenptl71)
