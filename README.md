@@ -1,37 +1,94 @@
-# chatbox
-A firebase chatbox package for Ionic 4 application
+# Chatbox
 
-Step to integrate:
+Chatbox is a npm module for ionic (version >= 4) to integrate in existing Ionic 4 projects.
 
-1.) Install package 
-`npm install @praveenptl71/chatbox`
+In this module firebase realtime database is used for chatting, There are 2 tabs, one is inbox tab and another is contacts tab, where all firebase users are displayed. By using this chat module you can send text & image message.
 
-2.) Import firebase
-`import * as firebase from 'firebase';`
+## Installation
 
-and Initialize firebase app
-`let firebaseConfig = {
-	/*
-	* firebase config
-	*/
-}
-firebase.initializeApp(firebaseConfig);`
+Run following command to install Chatbox in your project.
 
-3.) Login with email and password
-`firebase.auth().signInWithEmailAndPassword('email@gmail.com', '123456').then(user=>{
-    this.initDB();
-        this.navCtrl.navigateRoot('/chatbox/tabs/inbox');
+```bash
+npm i @praveenptl71/chatbox --save
+```
+
+
+## Documentation
+
+
+## Basic Usage
+
+### Ionic/Angular apps
+To use this package, import and add the module to your `@NgModule`, and then inject it where you wish to use it. 
+
+```typescript
+// app.module.ts
+import { ChatModule } from '@praveenptl71/chatbox';
+
+...
+
+@NgModule({
+  ...
+
+  imports: [
+    ...
+    ChatModule
+    ...
+  ]
+  ...
 })
-.catch(error=>{    console.error(error); })`
+export class AppModule { }
+```
 
-4.) Import service to load users and chats
-`import { UserService, RoomService } from '@praveenptl71/chatbox';`
+#### Add firebase app
 
-add in constructor
-`constructor(public userService:UserService, public roomService:RoomService) {}`
+Import package
+```typescript
+import * as firebase from 'firebase';
+```
 
-5.) Create a initDB function and call this method from 
-`initDB(){
-    this.userService.getUsers();
-    this.roomService.getAllRooms();
-}`
+Initialize app (if you are already initialized firebase app in your projects, do not initialize this again)
+```typescript
+let firebaseConfig = { 
+	/* 
+	* firebase config 
+	*/ 
+	};
+firebase.initializeApp(firebaseConfig);
+```
+
+#### Import service to load users and chats
+
+```typescript
+import { UserService, RoomService } from '@praveenptl71/chatbox';
+```
+
+#### add in constructor
+
+```typescript
+constructor( ..., public userService:UserService, public roomService:RoomService, ...)
+```
+
+
+#### Login to firebase app
+
+Login with email and password
+
+```typescript
+firebase.auth().signInWithEmailAndPassword('email@gmail.com', '123456').then(user=>{ 
+	// load all users and chats
+	this.userService.getUsers(); 
+	this.roomService.getAllRooms();
+
+	// navigate to this url
+	this.navCtrl.navigateRoot('/chatbox/tabs/inbox'); 
+}) 
+.catch(error=>{ 
+	console.error(error); 
+})
+```
+
+# Credits
+
+Praveen Patel - [@praveenptl71](https://github.com/praveenptl71)
+
