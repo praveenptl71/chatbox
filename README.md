@@ -82,7 +82,7 @@ firebase.auth().createUserWithEmailAndPassword('email@gmail.com', '123456').then
 	this.roomService.getAllRooms();
 
 	// navigate to this url
-	this.navCtrl.navigateRoot('/chatbox/tabs/inbox'); 
+	this.navCtrl.navigateForward('/chatbox/tabs/inbox'); 
 })
 .catch(error=>{
   
