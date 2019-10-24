@@ -2,7 +2,7 @@
     <ion-list>
         <ion-item lines="full" button *ngFor="let user of users" (click)="userClicked(user)">
             <ion-avatar slot="start">
-                <img [src]="(user.meta && user.meta.pictureURL)?user.meta.pictureURL:'assets/imgs/user.png'" onError="src = 'assets/imgs/user.png'">
+                <img [src]="(user.meta && user.meta.pictureURL)?user.meta.pictureURL:'http://flathash.com/296.png'" onError="src = 'assets/imgs/user.png'">
             </ion-avatar>
             <ion-label>
                 {{ (user.meta && user.meta.name)?user.meta.name:user.meta.email }}
@@ -18,13 +18,13 @@
 
 
     <ion-fab *ngIf="!isEnabled" vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button>
-            <ion-icon name="add"></ion-icon>
+        <ion-fab-button color="chatboxPrimary">
+            <ion-icon color="chatboxLight" name="add"></ion-icon>
         </ion-fab-button>
 
         <ion-fab-list side="top">
-            <ion-fab-button data-desc="Group" (click)="createThread(1)">
-                <ion-icon color="chatboxPrimary" name="people"></ion-icon>
+            <ion-fab-button color="chatboxPrimary" data-desc="Group" (click)="createThread(1)">
+                <ion-icon color="chatboxLight" name="people"></ion-icon>
                 <!-- <ion-label>Group</ion-label> -->
             </ion-fab-button>
             <!-- <ion-fab-button data-desc="Broadcast" (click)="createThread(2)">
@@ -36,11 +36,11 @@
     </ion-fab>
 
     <ion-fab *ngIf="isEnabled" vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button style="float: left" (click)="isEnabled = false; userList=[];">
-            <ion-icon name="close"></ion-icon>
+        <ion-fab-button color="danger" style="float: left" (click)="isEnabled = false; userList=[];">
+            <ion-icon color="chatboxLight" name="close"></ion-icon>
         </ion-fab-button>
-        <ion-fab-button style="float: left" (click)="createGroupThread()">
-            <ion-icon name="arrow-forward"></ion-icon>
+        <ion-fab-button color="success" style="float: left" (click)="createGroupThread()">
+            <ion-icon color="chatboxLight" name="arrow-forward"></ion-icon>
         </ion-fab-button>
     </ion-fab>
     <!-- <ion-fab *ngIf="isEnabled" vertical="bottom" horizontal="end" slot="fixed">

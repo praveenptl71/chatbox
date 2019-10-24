@@ -160,7 +160,7 @@ export class Tab2Page {
         {
           text: 'Cancel',
           role: 'cancel',
-          cssClass: 'secondary',
+          cssClass: 'alert-btn-cancel',
           handler: (e) => {
             this.threadType = null;
             this.userList = [];
@@ -168,6 +168,7 @@ export class Tab2Page {
           }
         }, {
           text: 'Submit',
+          cssClass: 'alert-btn-submit',
           handler: (data) => {
             console.log(data.name1, data.name2);
             if(this.threadType == 1) this.createGroup(data.name1, data.name2);

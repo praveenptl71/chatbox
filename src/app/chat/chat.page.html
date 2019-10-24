@@ -8,9 +8,9 @@
         </ion-buttons>
         <ion-title class="ion-no-padding">
             <ion-item button (click)="openChantDetails()" style="--background: transparent;--padding-start:0" lines="none">
-                <ion-avatar slot="start"><img [src]="(currentThread && currentThread.thread && currentThread.thread.details.type == Define.RoomTypeGroup)? currentThread.thread.details.type :((users && users.meta && users.meta.pictureURL)?users.meta.pictureURL:'')" onError="src = 'assets/imgs/user.png'"
+                <ion-avatar slot="start"><img [src]="(currentThread && currentThread.thread && currentThread.thread.details.type == Define.RoomTypeGroup)? currentThread.thread.details.type :((users && users.meta && users.meta.pictureURL)?users.meta.pictureURL:'')" onError="src = 'http://flathash.com/296.png'"
                     /> </ion-avatar>
-                <ion-label color="light">
+                <ion-label color="chatboxLight">
                     {{ (currentThread && currentThread.thread && currentThread.thread.details.type == Define.RoomTypeGroup)?currentThread.thread.details.name:((users && users.meta)?users.meta.name:'')}}
                     <small *ngIf="(users && users.online) && currentThread.thread.details.type == Define.RoomType1to1">
                         <p> {{ (users.online.status == true)?"online": (getDateTimeString(users.online.time) ) }} </p>

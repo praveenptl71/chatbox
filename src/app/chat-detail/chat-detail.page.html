@@ -6,7 +6,7 @@
           <ion-icon slot="icon-only" slot="icon-only" color="light" name="arrow-back"></ion-icon>
       </ion-button> -->
         </ion-buttons>
-        <ion-title>chatDetail</ion-title>
+        <ion-title color="chatboxLight">chatDetail</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,7 @@
         <ion-list-header>Group member</ion-list-header>
         <ion-item *ngFor="let user of users">
             <ion-avatar slot="start" style="position: relative">
-                <img [src]="getUserImage(user.uid)" onError="src = 'assets/imgs/user.png'">
+                <img [src]="getUserImage(user.uid)" onError="src = 'http://flathash.com/296.png'">
             </ion-avatar>
             <ion-label>
                 {{ getUserName(user.uid) }}<br>

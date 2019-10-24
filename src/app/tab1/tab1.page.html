@@ -9,7 +9,7 @@
 <ion-content>
   <ion-item button *ngFor="let room of inbox" (click)="openChat(room)">
     <ion-avatar slot="start" style="position: relative">
-      <img [src]="(room.details && room.details.pictureURL)?room.details.pictureURL:'assets/imgs/user.png'" onError="src = 'assets/imgs/user.png'" >
+      <img [src]="(room.details && room.details.pictureURL)?room.details.pictureURL:'http://flathash.com/296.png'" onError="src = 'assets/imgs/user.png'" >
       <!-- <ion-icon *ngIf="room.details.online" class="online-icon" color="success" name="ios-radio-button-on"></ion-icon> -->
     </ion-avatar>      
     <ion-label>{{ room.details.name }}<p *ngIf="room.lastMessage" [innerHTML]="getLastMessage(room)" ></p></ion-label>
